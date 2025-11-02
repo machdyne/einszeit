@@ -2,6 +2,8 @@
 
 Einszeit is an open-source security device that can theoretically provide perfect quantum-proof encryption between two paired devices over any communications medium.
 
+![Einszeit](https://github.com/machdyne/einszeit/blob/42f7534c930817e6dd1db8ed6618d3658704d32c/einszeit.png)
+
 This repo contains schematics, PCB layouts, a 3D-printable case, firmware and documentation.
 
 Find more information on the [Einszeit product page](https://machdyne.com/product/einszeit-security-device/).
