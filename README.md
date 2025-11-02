@@ -121,7 +121,9 @@ The alice key is stored in flash at 0x000000 and the bob key is stored at 0x2000
 
 Messages are generated in the following format:
 
+```
 base64 ( [ <key_ptr:32> <msg_len:32> <ciphertext:n> ] <crc32:32> )
+```
 
 Note that the key offset and message length are not encrypted.
 
