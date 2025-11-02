@@ -113,6 +113,8 @@ The metadata is 32-bytes and is stored in one of 16 EEPROM data slots:
 
 All metadata slots are scanned to find the latest valid slot, then written to (latest\_slot + 1) % 16 on update.
 
+*Note: This is currently limited to 4 slots.*
+
 ### Key Storage
 
 The alice key is stored in flash at 0x000000 and the bob key is stored at 0x200000.
