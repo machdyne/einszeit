@@ -65,7 +65,7 @@ Type your message here.
 
 ### Read a message
 
-Use this command to read an encrypted base64-encoded message that was previously generated using the write command with a paired device.
+Use this command to read an encrypted base64-encoded message that was previously generated using the write command from a paired device.
 
 ```
 $ ez -r << cipher.txt
@@ -91,7 +91,7 @@ ez -E
 
 ### Random data
 
-This command will generate 32 bytes of random data, it can be used to test the quality of the hardware randomn number generator with testrand.sh.
+This command will generate 32 bytes of random data, it can be used to test the quality of the hardware random number generator with testrand.sh.
 
 ```
 ez -R
