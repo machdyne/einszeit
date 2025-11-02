@@ -65,7 +65,7 @@ Type your message here.
 
 ### Read a message
 
-Use this command to read an encrypted base64-encoded message that was previously generated using the write command.
+Use this command to read an encrypted base64-encoded message that was previously generated using the write command with a paired device.
 
 ```
 $ ez -r << cipher.txt
