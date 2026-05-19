@@ -135,7 +135,7 @@ To the extent that there is LLM-generated code in this repo, it should be space 
 
 ## License
 
-The contents of this repo are released under the [Lone Dynamics Open License](LICENSE.md), with the following exceptions:
+The contents of this repo are released under the [CERN-OHL-P](LICENSE.txt) license.
 
   * The ch32fun library is MIT licensed.
   * The hidapi library is BSD licensed.
