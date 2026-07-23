@@ -1,143 +1,68 @@
 # Einszeit
 
-Einszeit is an open-source security device that can theoretically provide perfect quantum-proof encryption between two paired devices over any communications medium.
+Einszeit is an open-source security device intended to provide information-theoretically secure (one-time-pad based) encryption between two or more paired devices over any communications medium.
 
-![Einszeit](https://github.com/machdyne/einszeit/blob/42f7534c930817e6dd1db8ed6618d3658704d32c/einszeit.png)
+> **Project status:** V1 hardware is in active development. See [Hardware Status](#hardware-status) and [Software Status](#software-status) below before using this project for anything beyond bench testing.
 
-This repo contains schematics, PCB layouts, a 3D-printable case, firmware and documentation.
+## Hardware Status
 
-Find more information on the [Einszeit product page](https://machdyne.com/product/einszeit-security-device/).
+| Version | Status |
+|---|---|
+| V0 | **Deprecated.** Based on the ATSHA204A secure element. See [Why V0 was deprecated](#why-v0-was-deprecated). No longer maintained or recommended for use. |
+| V1 | **Design complete, not yet fabricated.** Redesigned around the RP2350 microcontroller. Boards have not yet been fabricated, bench validated, entropy-tested, or used to generate production key material. |
 
-*This is a very early release of the firmware intended for developers and other interested parties, it is not yet intended for actual use.*
+### Why V0 was deprecated
 
-## Limitations
+V0 relied on the ATSHA204A secure element's `Random` command as its sole entropy source. While this was suitable for a functional prototype, it is not a raw entropy tap — it is the output of an internal DRBG (deterministic random bit generator) seeded periodically from a physical noise source. This means:
 
-Some of the limitations may be improved through firmware updates.
+- Output entropy is bounded by the (infrequently refreshed) internal seed, not by the number of bytes read out.
+- The construction is architecturally unsuited to one-time-pad key material, which requires each output bit to carry close to full entropy.
+- The DRBG design is closed and proprietary, offering no way to independently validate its internal construction.
 
-  * Message generation is limited to ~2MB after each pairing.
-  * Initial key generation takes several hours.
-  * Paired devices must be distributed in person.
-  * Crypto IC configuration is factory locked to enable RNG output.
-  * Key is temporarily stored on your computer during pairing.
-  * Device is limited to ~400K lifetime metadata updates.
-  * Must copy key to one device at a time.
-  * Lacks fundamental error checking.
+None of this made the ATSHA204A insecure for its intended purpose (it's a perfectly reasonable secure element), but it made it the wrong building block for Einszeit's core security claim. V1 replaces it entirely.
 
-## Usage
+### V1 architecture (hardware)
 
-The `ez` utility can be used to configure the device identity, to generate and copy keys, and to read or write messages. It stores the key pointer on the device, incrementing it each time a message is written.
+V1 is built around the **RP2350** microcontroller, chosen primarily for its documented, dedicated TRNG peripheral:
 
-### Set device identity
+- **Entropy source:** RP2350's built-in TRNG block (Arm IP), which samples an internal free-running ring oscillator and claims compliance with FIPS 140-2, BSI AIS-31, and NIST SP 800-90B. Nominal entropy rate is ~7.5 kb/s at 150 MHz core clock.
+- **Key storage:** unchanged in concept from V0 — key material is written directly to flash and never persisted on the host beyond a transient in-memory buffer during transfer.
 
-This command initializes the device metadata and sets the device identity.
+A secondary, physically independent entropy source (e.g. a discrete noise circuit) is not currently planned, but remains a possible future defense-in-depth addition if the RP2350 TRNG's characteristics warrant it.
 
-Each device in the pair is identified as either alice or bob. The metadata is stored in EEPROM. The device must be erased to change its identity.
+Full entropy source documentation, extraction method, and validation results will be published alongside V1 firmware.
 
-If the identity is alice, this command will also generate both the alice and bob keys and save them as `ez.key` (this will take several hours).
+## Software Status
 
-```
-$ ez -i <alice|bob>
-```
+The `ez` utility (originally written against V0's alice/bob device model) is **not yet compatible with V1**.
 
-### Copy keys
+- V1 introduces a **multi-key model**, replacing the fixed alice/bob key-pair scheme with support for an arbitrary number of paired devices and key slots.
+- `ez` will require updated firmware-side commands and a corresponding rewrite of its identity, key-copy, and read/write logic to address multiple key slots rather than a single fixed pair.
+- New V1 firmware (implementing the TRNG-based generation pipeline and multi-key metadata format) is in progress and not yet released.
 
-This command copies the key data to the connected device.
+**Until firmware and `ez` are updated, V1 boards should be treated as hardware prototypes only.** Do not use V1 boards for generating or exchanging production key material.
 
-```
-$ ez -c
-```
+## Security Model
 
-### Write a message
+Einszeit's core claim is that, given genuine full-entropy key material and correct one-time use, message confidentiality is information-theoretically secure — i.e., secure regardless of an adversary's computational power. This claim depends entirely on:
 
-The write command generates an encrypted base64-encoded message. The message will only be generated after the key pointer has been successfully incremented.
+1. The entropy source(s) actually delivering full min-entropy per output bit (not merely passing statistical randomness tests, which a well-built DRBG would also pass).
+2. Conditioning/extraction functions that don't reintroduce a computational-hardness dependency where an information-theoretic one is claimed (e.g., preferring universal-hash/Leftover-Hash-Lemma-based extraction over hash-based conditioning where the strict claim matters).
+3. Correct one-time use of key material and secure erasure after use.
 
-```
-$ ez -w << plain.txt
-```
+Documentation accompanying the V1 firmware release will state precisely which parts of the pipeline carry an information-theoretic guarantee and which (if any) rely on a cryptographic hardness assumption, so users can evaluate the claim rather than take it on faith.
 
-or
+## Roadmap
 
-```
-$ ez -w
-Type your message here.
-^D
-```
-
-### Read a message
-
-Use this command to read an encrypted base64-encoded message that was previously generated using the write command from a paired device.
-
-```
-$ ez -r << cipher.txt
-```
-
-or
-
-```
-$ ez -r
-Paste the base64-encoded message here.
-^D
-```
-
-Note: You can use `-v` to verify a message that you've written.
-
-### Erase device
-
-This peforms a factory reset by erasing the keys and metadata.
-
-```
-ez -E
-```
-
-### Random data
-
-This command will generate 32 bytes of random data, it can be used to test the quality of the hardware random number generator with testrand.sh.
-
-```
-ez -R
-```
-
-## Implementation Details
-
-### Metadata
-
-The metadata is 32-bytes and is stored in one of 16 EEPROM data slots:
-
-	magic[2] = 0x455a
-    sequence[4] = highest value indiciates current slot
-	send_ptr[4] = offset of next unused key location
-	boot_cnt[4] = incremented each time the device is powered on
-	identity[1] = (0x00 = alice, 0x01 = bob)
-    reserved[16]
-	crc[1] = crc8(metadata)
-
-All metadata slots are scanned to find the latest valid slot, then written to (latest\_slot + 1) % 16 on update.
-
-*Note: This is currently limited to 4 slots.*
-
-### Key Storage
-
-The alice key is stored in flash at 0x000000 and the bob key is stored at 0x200000.
-
-### Message Format
-
-Messages are generated in the following format:
-
-```
-base64 ( [ <key_ptr:32> <msg_len:32> <ciphertext:n> ] <crc32:32> )
-```
-
-Note that the key offset and message length are not encrypted.
-
-## LLM-generated code
-
-To the extent that there is LLM-generated code in this repo, it should be space indented. Any space indented code should be carefully audited and then converted to tabs (eventually).
+- [ ] Fabricate V1 boards
+- [ ] Bench validation of V1 hardware (power, TRNG readout)
+- [ ] Independent SP 800-90B-style min-entropy estimation of the RP2350 TRNG
+- [ ] V1 firmware: TRNG readout and multi-key metadata format
+- [ ] `ez` utility rewrite for multi-key model
+- [ ] Publish entropy source validation results and extractor design
 
 ## License
 
-The contents of this repo are released under the [CERN-OHL-P](LICENSE.txt) license, with the following exceptions:
-
-  * The ch32fun library is MIT licensed.
-  * The hidapi library is BSD licensed.
+The contents of this repo are released under the [Lone Dynamics Open License](LICENSE.md).
 
 Note: You can use these designs for commercial purposes but we ask that instead of producing exact clones, that you either replace our trademarks and logos with your own or add your own next to ours.
