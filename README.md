@@ -2,6 +2,8 @@
 
 Einszeit is an open-source security device intended to provide information-theoretically secure (one-time-pad based) encryption between two or more paired devices over any communications medium.
 
+![Einszeit](https://github.com/machdyne/einszeit/blob/e0d249029b92c23ce6c7419e1d554825ee851358/einszeit.png)
+
 > **Project status:** V1 hardware is in active development. See [Hardware Status](#hardware-status) and [Software Status](#software-status) below before using this project for anything beyond bench testing.
 
 ## Hardware Status
@@ -48,6 +50,8 @@ Einszeit's core claim is that, given genuine full-entropy key material and corre
 
 ## License
 
-The contents of this repo are released under the [Lone Dynamics Open License](LICENSE.md).
 
-Note: You can use these designs for commercial purposes but we ask that instead of producing exact clones, that you either replace our trademarks and logos with your own or add your own next to ours.
+The contents of this repo are released under the [CERN-OHL-P](LICENSE.txt) license with the following exceptions:
+
+ * The ch32fun library is MIT licensed.
+ * The hidapi library is BSD licensed.
