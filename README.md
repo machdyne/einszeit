@@ -48,8 +48,11 @@ Einszeit's core claim is that, given genuine full-entropy key material and corre
 2. Conditioning/extraction functions that don't reintroduce a computational-hardness dependency where an information-theoretic one is claimed (e.g., preferring universal-hash/Leftover-Hash-Lemma-based extraction over hash-based conditioning where the strict claim matters).
 3. Correct one-time use of key material and secure erasure after use.
 
-## License
+## Funding
 
+This project was partially funded through the NGI0 Commons Fund, a fund established by NLnet with financial support from the European Commission's Next Generation Internet programme.
+
+## License
 
 The contents of this repo are released under the [CERN-OHL-P](LICENSE.txt) license with the following exceptions:
 
