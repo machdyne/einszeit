@@ -50,7 +50,7 @@ Einszeit's core claim is that, given genuine full-entropy key material and corre
 
 ## AI Disclosure
 
-This project makes use of LLMs for documentation, specifications, firmware and software. Once the project is stable, a human audit will be performed resulting in a code freeze that must not be directly modified by any LLM.
+This project makes use of LLMs for documentation, specifications, firmware and software. Once the project is stable, a human audit will be performed resulting in a code freeze that must not be directly modified by any LLM without an additional audit.
 
 ## Funding
 
