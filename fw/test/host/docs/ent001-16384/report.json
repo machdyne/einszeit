@@ -1,0 +1,1209 @@
+{
+  "generated": "2026-09-05 10:02:33 CEST",
+  "meta": {
+    "key_material": false,
+    "usage": "TEST ONLY - characterisation data, MUST NOT be used as key material (EZ-SEC-001 SEC-ENTROPY-001, SEC-DIST-001)",
+    "fw": "einszeit-hwtest",
+    "version": "1.4.0",
+    "kind": "capture",
+    "mode": "conditioned",
+    "device_uuid": "9bae095b4556f8f4",
+    "board_id": "9bae095b4556f8f4",
+    "rosc_len": 0,
+    "sample_cnt": 16384,
+    "bypass_vnc": false,
+    "bypass_crngt": false,
+    "bypass_autocorr": false,
+    "bytes": 17088,
+    "collections": 712,
+    "vn_err": 0,
+    "crngt_err": 8,
+    "autocorr_err": 0,
+    "resets": 0,
+    "timeouts": 0,
+    "elapsed_us": 60296821,
+    "bits_per_sec": 2267.18,
+    "temp_c_start": 32.29,
+    "temp_c_end": 32.29,
+    "clk_sys_hz": 150000000,
+    "rows": 0,
+    "row_bytes": 0,
+    "rounds": 65,
+    "total_bytes": 12600000,
+    "concatenated": true,
+    "_container": {
+      "declared_crc32": "0x00000000",
+      "computed_crc32": "0x00000000",
+      "crc_ok": true,
+      "payload_bytes": 12600000
+    }
+  },
+  "entropy": {
+    "n_bits": 8000000,
+    "h_min_per_bit": 0.8791392506193688,
+    "limiting_estimator": "Compression",
+    "source": "builtin",
+    "estimates": [
+      {
+        "name": "Most Common Value",
+        "h_min": 0.9983818381631137,
+        "detail": {
+          "p_hat": 0.50010575,
+          "p_upper": 0.5005611267853601,
+          "most_common_symbol": 1
+        }
+      },
+      {
+        "name": "Collision",
+        "h_min": 0.9753311511209567,
+        "detail": {
+          "v": 3199268,
+          "mean": 2.500571380703336,
+          "mean_lower": 2.4998512848065086,
+          "p": 0.5086230851060135
+        }
+      },
+      {
+        "name": "Markov",
+        "h_min": 0.9970274010015094,
+        "detail": {
+          "P0": 0.5003496267853601,
+          "P1": 0.5005611267853601,
+          "P00": 0.500146462551339,
+          "P01": 0.501141673038357,
+          "P10": 0.5009299964517455,
+          "P11": 0.5003578673140259,
+          "p_max_128": 3.825606197704488e-39
+        }
+      },
+      {
+        "name": "Compression",
+        "h_min": 0.8791392506193688,
+        "detail": {
+          "mean": 5.217677940196593,
+          "mean_lower": 5.213840835953052,
+          "p": 0.025829517359490562,
+          "blocks": 1333333,
+          "block_bits": 6
+        }
+      },
+      {
+        "name": "t-Tuple",
+        "h_min": 0.9294675058942697,
+        "detail": {
+          "t": 19,
+          "p_hat": 0.5245972756632644,
+          "p_upper": 0.5250521010954434
+        }
+      },
+      {
+        "name": "LRS",
+        "h_min": 0.9982168417656738,
+        "detail": {
+          "u": 20,
+          "v": 44,
+          "p_hat": 0.50016300085586,
+          "p_upper": 0.5006183776272071
+        }
+      },
+      {
+        "name": "MultiMCW",
+        "h_min": 0.9992342516986609,
+        "detail": {
+          "predictions": 7995905,
+          "correct": 3996433,
+          "p_global": 0.49980996522595006,
+          "p_global_upper": 0.5002654585813724,
+          "longest_correct_run": 20,
+          "p_local": 0.3856865324847536
+        }
+      },
+      {
+        "name": "Lag",
+        "h_min": 0.9980316778853252,
+        "detail": {
+          "predictions": 7999872,
+          "correct": 4001754,
+          "p_global": 0.5002272536360581,
+          "p_global_upper": 0.5006826340276264,
+          "longest_correct_run": 21,
+          "p_local": 0.4032791732370668
+        }
+      },
+      {
+        "name": "MultiMMC",
+        "h_min": 0.9988758511933384,
+        "detail": {
+          "predictions": 7999984,
+          "correct": 3999467,
+          "p_global": 0.49993437486874975,
+          "p_global_upper": 0.5003897521157502,
+          "longest_correct_run": 22,
+          "p_local": 0.42004041744408155
+        }
+      },
+      {
+        "name": "LZ78Y",
+        "h_min": 0.9989075661787306,
+        "detail": {
+          "predictions": 7999984,
+          "correct": 3999379,
+          "p_global": 0.4999233748467497,
+          "p_global_upper": 0.500378752092325,
+          "longest_correct_run": 23,
+          "p_local": 0.43600595744431764
+        }
+      }
+    ],
+    "iid_indicators": {
+      "chi2_goodness_of_fit": 9.92347244389925,
+      "chi2_goodness_of_fit_p": 0.35671604820116953,
+      "chi2_independence": 4.913106634625163,
+      "chi2_independence_p": 0.08572992618469207,
+      "lrs_length": 44,
+      "lrs_expected_iid": 45.86313713864835,
+      "verdict": "consistent with IID",
+      "note": "These indicators can reject IID but cannot establish it. A formal IID claim requires the 10,000-permutation test from SP 800-90B 5.1, which is not reimplemented here."
+    },
+    "estimator_ceiling": {
+      "estimator": "Compression",
+      "ideal_score": 0.8807395760895741,
+      "ideal_sd": 0.011283798650977108,
+      "measured": 0.8791392506193688,
+      "gap": 0.0016003254702052772,
+      "threshold": 0.033851395952931324,
+      "at_ceiling": true
+    },
+    "notes": [
+      "Assessed on the first 8,000,000 bits of a 100,800,000-bit capture. SP 800-90B asks for at least 1,000,000 samples and the predictors scale badly beyond a few million; SP 800-22 below was run over the full capture. Override with --entropy-bits."
+    ]
+  },
+  "basic": {
+    "nbytes": 12600000,
+    "nbits": 100800000,
+    "ones": 50400594,
+    "ones_fraction": 0.5000058928571428,
+    "bit_bias": 5.892857142808516e-06,
+    "shannon_bit": 0.9999999998998026,
+    "shannon_byte": 7.999978382273044,
+    "min_entropy_byte_mcv": 7.9804573490409405,
+    "byte_chi2": 377.5753346031746,
+    "byte_chi2_p": 9.190839199441887e-07,
+    "arithmetic_mean": 127.47301563492063,
+    "monte_carlo_pi": 3.1429923809523808,
+    "monte_carlo_error": 0.0004455470574736104,
+    "serial_correlation": -0.0007949038971363192,
+    "compression": {
+      "zlib": 1.0003108978271484,
+      "bz2": 1.0049734115600586,
+      "lzma": 1.0001068115234375
+    },
+    "longest_run_ones": 25,
+    "longest_run_zeros": 23
+  },
+  "sp800_22_multi": {
+    "marginal": [
+      "Runs"
+    ],
+    "weak_criterion": false,
+    "sequences": 100,
+    "bits_per_sequence": 1008000,
+    "proportion_bounds": [
+      0.9601503768868014,
+      1.0
+    ],
+    "tests": [
+      {
+        "test": "Approximate entropy",
+        "subtests": 1,
+        "ran": 100,
+        "skipped": 0,
+        "passed": 100,
+        "proportion": 1.0,
+        "bounds": [
+          0.9601503768868014,
+          1.0
+        ],
+        "uniformity_p": 0.2022676854058255,
+        "p_values": [
+          0.7650350639866618,
+          0.0349616207514687,
+          0.6239938545164119,
+          0.790374339129357,
+          0.596087943116518,
+          0.7086670277589354
+        ],
+        "min_p": 0.011041461307594112,
+        "median_p": 0.5453648604372617,
+        "n_failing_subtests": 0,
+        "n_marginal_subtests": 0,
+        "verdict": "pass"
+      },
+      {
+        "test": "Binary matrix rank",
+        "subtests": 1,
+        "ran": 100,
+        "skipped": 0,
+        "passed": 99,
+        "proportion": 0.99,
+        "bounds": [
+          0.9601503768868014,
+          1.0
+        ],
+        "uniformity_p": 0.8513825753567951,
+        "p_values": [
+          0.14668114479161923,
+          0.6830196841452981,
+          0.44761032370490633,
+          0.20181345456992708,
+          0.782304377862766,
+          0.3981902631834946
+        ],
+        "min_p": 0.001197137993462288,
+        "median_p": 0.4822572866164214,
+        "n_failing_subtests": 0,
+        "n_marginal_subtests": 0,
+        "verdict": "pass"
+      },
+      {
+        "test": "Block frequency",
+        "subtests": 1,
+        "ran": 100,
+        "skipped": 0,
+        "passed": 100,
+        "proportion": 1.0,
+        "bounds": [
+          0.9601503768868014,
+          1.0
+        ],
+        "uniformity_p": 0.0008175669552355569,
+        "p_values": [
+          0.9960605347165419,
+          0.34699135579379703,
+          0.5580215117311494,
+          0.508411468688838,
+          0.5487539333766754,
+          0.8358148480277907
+        ],
+        "min_p": 0.04420475145243975,
+        "median_p": 0.642507819980937,
+        "n_failing_subtests": 0,
+        "n_marginal_subtests": 0,
+        "verdict": "pass"
+      },
+      {
+        "test": "Cumulative sums",
+        "subtests": 2,
+        "ran": 100,
+        "skipped": 0,
+        "passed": 100,
+        "proportion": 1.0,
+        "bounds": [
+          0.9601503768868014,
+          1.0
+        ],
+        "uniformity_p": 0.8755390252983378,
+        "p_values": [
+          0.06825826313904981,
+          0.07883966932537412,
+          0.8167062734544581,
+          0.4207930010322637,
+          0.937688462365942,
+          0.539368393404787
+        ],
+        "min_p": 0.011316539688000837,
+        "median_p": 0.5372554576976456,
+        "n_failing_subtests": 0,
+        "n_marginal_subtests": 0,
+        "verdict": "pass"
+      },
+      {
+        "test": "DFT (spectral)",
+        "subtests": 1,
+        "ran": 100,
+        "skipped": 0,
+        "passed": 99,
+        "proportion": 0.99,
+        "bounds": [
+          0.9601503768868014,
+          1.0
+        ],
+        "uniformity_p": 0.8676916714977052,
+        "p_values": [
+          0.7352235981360293,
+          0.9927073236602513,
+          0.34182030247262574,
+          0.1386857496213811,
+          0.2807943079461357,
+          0.37529766700731737
+        ],
+        "min_p": 0.006277894297674211,
+        "median_p": 0.5019295928382946,
+        "n_failing_subtests": 0,
+        "n_marginal_subtests": 0,
+        "verdict": "pass"
+      },
+      {
+        "test": "Frequency (monobit)",
+        "subtests": 1,
+        "ran": 100,
+        "skipped": 0,
+        "passed": 100,
+        "proportion": 1.0,
+        "bounds": [
+          0.9601503768868014,
+          1.0
+        ],
+        "uniformity_p": 0.2022676854058255,
+        "p_values": [
+          0.05634190297015723,
+          0.09348302177869831,
+          0.5487686126414824,
+          0.305876601461296,
+          0.8624092191503092,
+          0.5879308209172098
+        ],
+        "min_p": 0.011280585771901141,
+        "median_p": 0.470848994641706,
+        "n_failing_subtests": 0,
+        "n_marginal_subtests": 0,
+        "verdict": "pass"
+      },
+      {
+        "test": "Linear complexity",
+        "subtests": 1,
+        "ran": 100,
+        "skipped": 0,
+        "passed": 100,
+        "proportion": 1.0,
+        "bounds": [
+          0.9601503768868014,
+          1.0
+        ],
+        "uniformity_p": 0.11538658258886127,
+        "p_values": [
+          0.8327324130159758,
+          0.9729611143736495,
+          0.9026068101173297,
+          0.9615897618804569,
+          0.9717761089193413,
+          0.5912939497200866
+        ],
+        "min_p": 0.015507521156244158,
+        "median_p": 0.6036303222951802,
+        "n_failing_subtests": 0,
+        "n_marginal_subtests": 0,
+        "verdict": "pass"
+      },
+      {
+        "test": "Longest run of ones",
+        "subtests": 1,
+        "ran": 100,
+        "skipped": 0,
+        "passed": 99,
+        "proportion": 0.99,
+        "bounds": [
+          0.9601503768868014,
+          1.0
+        ],
+        "uniformity_p": 0.0909359765798051,
+        "p_values": [
+          0.8280304895458639,
+          0.40452233923028086,
+          0.22798610904103705,
+          0.004321406292245186,
+          0.9572779401576963,
+          0.7646519891089345
+        ],
+        "min_p": 0.004321406292245186,
+        "median_p": 0.43124702630359957,
+        "n_failing_subtests": 0,
+        "n_marginal_subtests": 0,
+        "verdict": "pass"
+      },
+      {
+        "test": "Maurer universal",
+        "subtests": 1,
+        "ran": 100,
+        "skipped": 0,
+        "passed": 100,
+        "proportion": 1.0,
+        "bounds": [
+          0.9601503768868014,
+          1.0
+        ],
+        "uniformity_p": 0.10879095519400787,
+        "p_values": [
+          0.8460198711580135,
+          0.7060209435432605,
+          0.32183751549387596,
+          0.12898956142164938,
+          0.9882798518027575,
+          0.28940910122892816
+        ],
+        "min_p": 0.04981438589232226,
+        "median_p": 0.5589447213452423,
+        "n_failing_subtests": 0,
+        "n_marginal_subtests": 0,
+        "verdict": "pass"
+      },
+      {
+        "test": "Non-overlapping template",
+        "subtests": 10,
+        "ran": 100,
+        "skipped": 0,
+        "passed": 97,
+        "proportion": 0.97,
+        "bounds": [
+          0.9601503768868014,
+          1.0
+        ],
+        "uniformity_p": 0.4559371952206618,
+        "p_values": [
+          0.16945488488880608,
+          0.34595629162671976,
+          0.546543143008213,
+          0.8915566108132273,
+          0.4686765019489585,
+          0.6838063847826713
+        ],
+        "min_p": 0.0011840242639446848,
+        "median_p": 0.5179234454190929,
+        "n_failing_subtests": 0,
+        "n_marginal_subtests": 0,
+        "verdict": "pass"
+      },
+      {
+        "test": "Overlapping template",
+        "subtests": 1,
+        "ran": 100,
+        "skipped": 0,
+        "passed": 100,
+        "proportion": 1.0,
+        "bounds": [
+          0.9601503768868014,
+          1.0
+        ],
+        "uniformity_p": 0.595548507284206,
+        "p_values": [
+          0.7535915351948681,
+          0.7027923899117277,
+          0.8987442890624561,
+          0.4289735412204231,
+          0.8073621245966874,
+          0.7545387770747509
+        ],
+        "min_p": 0.018171075392405124,
+        "median_p": 0.4662753021224312,
+        "n_failing_subtests": 0,
+        "n_marginal_subtests": 0,
+        "verdict": "pass"
+      },
+      {
+        "test": "Random excursions",
+        "subtests": 8,
+        "ran": 64,
+        "skipped": 36,
+        "passed": 62,
+        "proportion": 0.96875,
+        "bounds": [
+          0.9526879711085018,
+          1.0
+        ],
+        "uniformity_p": 0.6590703657532393,
+        "p_values": [
+          0.07311656971087828,
+          0.7695884457837012,
+          0.9553863413495488,
+          0.5419408043191987,
+          0.5466698482287033,
+          0.5228222507991005
+        ],
+        "min_p": 0.002263096272338435,
+        "median_p": 0.4823288111264674,
+        "n_failing_subtests": 0,
+        "n_marginal_subtests": 0,
+        "verdict": "pass"
+      },
+      {
+        "test": "Random excursions variant",
+        "subtests": 18,
+        "ran": 64,
+        "skipped": 36,
+        "passed": 63,
+        "proportion": 0.984375,
+        "bounds": [
+          0.9526879711085018,
+          1.0
+        ],
+        "uniformity_p": 0.00015999725613417132,
+        "p_values": [
+          0.13847824789487762,
+          0.8192110226745246,
+          0.12396849405689742,
+          0.19800576409484238,
+          0.5575761687280709,
+          0.7449108940184495
+        ],
+        "min_p": 0.0009478831065573119,
+        "median_p": 0.5156895152780379,
+        "n_failing_subtests": 0,
+        "n_marginal_subtests": 0,
+        "verdict": "pass"
+      },
+      {
+        "test": "Runs",
+        "subtests": 1,
+        "ran": 100,
+        "skipped": 0,
+        "passed": 96,
+        "proportion": 0.96,
+        "bounds": [
+          0.9601503768868014,
+          1.0
+        ],
+        "uniformity_p": 2.7235125836008146e-09,
+        "p_values": [
+          0.7048014209607741,
+          0.5506370083144596,
+          0.1376937803596637,
+          0.055187630247520825,
+          0.12358891909101491,
+          0.12449874392018148
+        ],
+        "min_p": 0.0006114169538498297,
+        "median_p": 0.2719267800412014,
+        "n_failing_subtests": 0,
+        "n_marginal_subtests": 1,
+        "verdict": "marginal"
+      },
+      {
+        "test": "Serial",
+        "subtests": 2,
+        "ran": 100,
+        "skipped": 0,
+        "passed": 97,
+        "proportion": 0.97,
+        "bounds": [
+          0.9601503768868014,
+          1.0
+        ],
+        "uniformity_p": 0.8513825753567951,
+        "p_values": [
+          0.6669146081228268,
+          0.49035043876930895,
+          0.29424598198670837,
+          0.6483100505191696,
+          0.6172741631586708,
+          0.9489054108768392
+        ],
+        "min_p": 0.000835173912403281,
+        "median_p": 0.48187118337777335,
+        "n_failing_subtests": 0,
+        "n_marginal_subtests": 0,
+        "verdict": "pass"
+      }
+    ],
+    "failed": [],
+    "pass": true
+  },
+  "sp800_22": {
+    "summary": {
+      "total": 15,
+      "ran": 15,
+      "skipped": 0,
+      "failed": [
+        "Runs"
+      ],
+      "pass": false,
+      "bits": 20000000
+    },
+    "tests": [
+      {
+        "name": "Frequency (monobit)",
+        "p_values": [
+          0.9796631875764926
+        ],
+        "pass": true,
+        "skipped": ""
+      },
+      {
+        "name": "Block frequency",
+        "p_values": [
+          0.9914301912008594
+        ],
+        "pass": true,
+        "skipped": ""
+      },
+      {
+        "name": "Runs",
+        "p_values": [
+          1.9017148089737191e-07
+        ],
+        "pass": false,
+        "skipped": ""
+      },
+      {
+        "name": "Longest run of ones",
+        "p_values": [
+          0.8280304895458639
+        ],
+        "pass": true,
+        "skipped": ""
+      },
+      {
+        "name": "Binary matrix rank",
+        "p_values": [
+          0.9650569484894397
+        ],
+        "pass": true,
+        "skipped": ""
+      },
+      {
+        "name": "DFT (spectral)",
+        "p_values": [
+          0.7256749279652046
+        ],
+        "pass": true,
+        "skipped": ""
+      },
+      {
+        "name": "Non-overlapping template",
+        "p_values": [
+          0.5222521515747696,
+          0.021806441057250853,
+          0.2275603259230356,
+          0.449939959069963,
+          0.3717888664168598,
+          0.31583548705416825,
+          0.1885037719304678,
+          0.8781391894090768,
+          0.8467283116958207,
+          0.5962552340439764
+        ],
+        "pass": true,
+        "skipped": ""
+      },
+      {
+        "name": "Overlapping template",
+        "p_values": [
+          0.4007183913032885
+        ],
+        "pass": true,
+        "skipped": ""
+      },
+      {
+        "name": "Maurer universal",
+        "p_values": [
+          0.9706294272547227
+        ],
+        "pass": true,
+        "skipped": ""
+      },
+      {
+        "name": "Linear complexity",
+        "p_values": [
+          0.8327324130159758
+        ],
+        "pass": true,
+        "skipped": ""
+      },
+      {
+        "name": "Serial",
+        "p_values": [
+          0.7000632568453983,
+          0.8749814863100562
+        ],
+        "pass": true,
+        "skipped": ""
+      },
+      {
+        "name": "Approximate entropy",
+        "p_values": [
+          0.4107354954279697
+        ],
+        "pass": true,
+        "skipped": ""
+      },
+      {
+        "name": "Cumulative sums",
+        "p_values": [
+          0.9297883247911657,
+          0.9130505539715656
+        ],
+        "pass": true,
+        "skipped": ""
+      },
+      {
+        "name": "Random excursions",
+        "p_values": [
+          0.4293144974436852,
+          0.9040237774272093,
+          0.7339814208116004,
+          0.30396325001589797,
+          0.1948929793314352,
+          0.36930600621114457,
+          0.5979503239064266,
+          0.0795491995725801
+        ],
+        "pass": true,
+        "skipped": ""
+      },
+      {
+        "name": "Random excursions variant",
+        "p_values": [
+          0.6374155027294348,
+          0.44765020474225226,
+          0.318648877195566,
+          0.23379355052170614,
+          0.3568342315247879,
+          0.33985748844789176,
+          0.21638169002794627,
+          0.13519123864690158,
+          0.092281038262096,
+          0.7710720481597608,
+          0.17511642536527472,
+          0.1563498814273799,
+          0.1585197216180405,
+          0.2227246587116225,
+          0.35532213682234814,
+          0.5000361910878677,
+          0.6657479151676955,
+          0.6356169837735881
+        ],
+        "pass": true,
+        "skipped": ""
+      }
+    ]
+  },
+  "ais31": {
+    "procedure_a": [
+      {
+        "name": "T0 disjointness",
+        "pass": true,
+        "value": 65536.0,
+        "bounds": [
+          65536,
+          65536
+        ],
+        "detail": {
+          "unique_sequences": 65536
+        },
+        "skipped": ""
+      },
+      {
+        "name": "T1 monobit",
+        "pass": true,
+        "value": 9984.0,
+        "bounds": [
+          9654,
+          10346
+        ],
+        "detail": {},
+        "skipped": ""
+      },
+      {
+        "name": "T2 poker",
+        "pass": true,
+        "value": 9.843200000000252,
+        "bounds": [
+          1.03,
+          57.4
+        ],
+        "detail": {},
+        "skipped": ""
+      },
+      {
+        "name": "T3 runs",
+        "pass": true,
+        "value": NaN,
+        "bounds": [],
+        "detail": {
+          "len1_val0": {
+            "count": 2471,
+            "bounds": [
+              2267,
+              2733
+            ],
+            "pass": true
+          },
+          "len1_val1": {
+            "count": 2484,
+            "bounds": [
+              2267,
+              2733
+            ],
+            "pass": true
+          },
+          "len2_val0": {
+            "count": 1201,
+            "bounds": [
+              1079,
+              1421
+            ],
+            "pass": true
+          },
+          "len2_val1": {
+            "count": 1181,
+            "bounds": [
+              1079,
+              1421
+            ],
+            "pass": true
+          },
+          "len3_val0": {
+            "count": 632,
+            "bounds": [
+              502,
+              748
+            ],
+            "pass": true
+          },
+          "len3_val1": {
+            "count": 627,
+            "bounds": [
+              502,
+              748
+            ],
+            "pass": true
+          },
+          "len4_val0": {
+            "count": 312,
+            "bounds": [
+              223,
+              402
+            ],
+            "pass": true
+          },
+          "len4_val1": {
+            "count": 341,
+            "bounds": [
+              223,
+              402
+            ],
+            "pass": true
+          },
+          "len5_val0": {
+            "count": 169,
+            "bounds": [
+              90,
+              223
+            ],
+            "pass": true
+          },
+          "len5_val1": {
+            "count": 161,
+            "bounds": [
+              90,
+              223
+            ],
+            "pass": true
+          },
+          "len6_val0": {
+            "count": 167,
+            "bounds": [
+              90,
+              223
+            ],
+            "pass": true
+          },
+          "len6_val1": {
+            "count": 158,
+            "bounds": [
+              90,
+              223
+            ],
+            "pass": true
+          }
+        },
+        "skipped": ""
+      },
+      {
+        "name": "T4 long run",
+        "pass": true,
+        "value": 16.0,
+        "bounds": [
+          0,
+          33
+        ],
+        "detail": {
+          "longest_run": 16
+        },
+        "skipped": ""
+      },
+      {
+        "name": "T5 autocorrelation",
+        "pass": true,
+        "value": 2553.0,
+        "bounds": [
+          2326,
+          2674
+        ],
+        "detail": {
+          "tau": 3368,
+          "search_deviation": 153
+        },
+        "skipped": ""
+      }
+    ],
+    "procedure_b": [
+      {
+        "name": "T6 uniform distribution",
+        "pass": true,
+        "value": 0.50298,
+        "bounds": [
+          0.475,
+          0.525
+        ],
+        "detail": {
+          "T6a_ones_fraction": 0.50298,
+          "T6a_pass": true,
+          "T6b_pair_proportions": [
+            0.24642,
+            0.2531,
+            0.2481,
+            0.25238
+          ],
+          "T6b_pass": true
+        },
+        "skipped": ""
+      },
+      {
+        "name": "T7 comparative multinomial",
+        "pass": true,
+        "value": 248.5122451053511,
+        "bounds": [],
+        "detail": {
+          "chi2": 248.5122451053511,
+          "dof": 255,
+          "p": 0.6026324080545057,
+          "words": 12600000
+        },
+        "skipped": ""
+      },
+      {
+        "name": "T8 entropy (Coron)",
+        "pass": "True",
+        "value": 7.999250334491314,
+        "bounds": [
+          7.976,
+          8.0
+        ],
+        "detail": {
+          "L": 8,
+          "Q": 2560,
+          "K": 256000,
+          "scaled": false
+        },
+        "skipped": ""
+      }
+    ],
+    "ran": 9,
+    "skipped": 0,
+    "failed": [],
+    "pass": true,
+    "note": "Implements AIS 31 v2.0 (2011). BSI's AIS 20/31 v3.0 (2024) restructures these procedures; a v3.0 evaluation needs different tests."
+  },
+  "fips140_2": {
+    "blocks": 5040,
+    "passed_per_test": {
+      "monobit": 5039,
+      "poker": 5039,
+      "runs": 5040,
+      "long_run": 5040
+    },
+    "per_test": {
+      "monobit": {
+        "blocks_passed": 5039,
+        "blocks_failed": 1,
+        "expected_failures": 0.504,
+        "p_value": 0.39590584152372243,
+        "pass": true
+      },
+      "poker": {
+        "blocks_passed": 5039,
+        "blocks_failed": 1,
+        "expected_failures": 0.504,
+        "p_value": 0.39590584152372243,
+        "pass": true
+      },
+      "runs": {
+        "blocks_passed": 5040,
+        "blocks_failed": 0,
+        "expected_failures": 1.764,
+        "p_value": 1.0,
+        "pass": true
+      },
+      "long_run": {
+        "blocks_passed": 5040,
+        "blocks_failed": 0,
+        "expected_failures": 1.008,
+        "p_value": 1.0,
+        "pass": true
+      }
+    },
+    "pass": true,
+    "failures": [
+      {
+        "block": 4521,
+        "test": "monobit",
+        "ones": 10306,
+        "poker_x": 35.99359999999979,
+        "longest_run": 15
+      },
+      {
+        "block": 4648,
+        "test": "poker",
+        "ones": 10042,
+        "poker_x": 47.0592000000006,
+        "longest_run": 15
+      }
+    ],
+    "note": "FIPS 140-2 4.9.1 is a power-up self-test on a single 20,000-bit block. Applied across a large capture, a few blocks fall outside its intervals by chance, so each subtest is judged on whether its failure count matches the expected false-positive rate rather than on a clean sweep. Removed from FIPS 140-2 by the 2002 change notice and absent from FIPS 140-3."
+  },
+  "restart": null,
+  "device": {
+    "pins": {
+      "all_pass": true,
+      "pins": [
+        {
+          "gpio": 18,
+          "name": "FRAM_SCLK",
+          "pullup": 1,
+          "pulldown": 0,
+          "pass": true
+        },
+        {
+          "gpio": 19,
+          "name": "FRAM_MOSI",
+          "pullup": 1,
+          "pulldown": 0,
+          "pass": true
+        },
+        {
+          "gpio": 20,
+          "name": "FRAM_MISO",
+          "pullup": 1,
+          "pulldown": 0,
+          "pass": true
+        },
+        {
+          "gpio": 21,
+          "name": "FRAM_SS",
+          "pullup": 1,
+          "pulldown": 1,
+          "pass": true
+        },
+        {
+          "gpio": 25,
+          "name": "SD_DET",
+          "pullup": 1,
+          "pulldown": 1,
+          "pass": true
+        },
+        {
+          "gpio": 26,
+          "name": "SD_SCLK",
+          "pullup": 1,
+          "pulldown": 1,
+          "pass": true
+        },
+        {
+          "gpio": 27,
+          "name": "SD_MOSI",
+          "pullup": 1,
+          "pulldown": 1,
+          "pass": true
+        },
+        {
+          "gpio": 28,
+          "name": "SD_MISO",
+          "pullup": 1,
+          "pulldown": 1,
+          "pass": true
+        },
+        {
+          "gpio": 29,
+          "name": "SD_CSN",
+          "pullup": 1,
+          "pulldown": 1,
+          "pass": true
+        },
+        {
+          "gpio": 12,
+          "name": "LED",
+          "pullup": 1,
+          "pulldown": 0,
+          "pass": true
+        }
+      ]
+    },
+    "clock": {
+      "clk_sys_hz": 150000000,
+      "clk_peri_hz": 48000000,
+      "clk_usb_hz": 48000000,
+      "clk_ref_hz": 12000000,
+      "clk_adc_hz": 48000000,
+      "meas": {
+        "pll_sys_khz": 150001,
+        "pll_usb_khz": 48000,
+        "xosc_khz": 12000,
+        "rosc_khz": 44035,
+        "lposc_khz": 33,
+        "clk_sys_khz": 150000,
+        "clk_peri_khz": 48000,
+        "clk_usb_khz": 48000,
+        "clk_ref_khz": 12001
+      },
+      "xosc_stable": true,
+      "xosc_startup_delay": 282
+    },
+    "aon": {
+      "running": true,
+      "source": "internal LPOSC (untrimmed ~32 kHz)",
+      "window_ms": 5000,
+      "aon_ms": 5099,
+      "sys_ms": 5000.004,
+      "ratio": 1.019799184,
+      "ppm": 19799.2
+    },
+    "fram": {
+      "present": true,
+      "rdid_supported": false,
+      "wel_toggles": true,
+      "miso_alive": true,
+      "id": "000000000000000000",
+      "vendor": "unknown",
+      "part": "unknown",
+      "density_bytes": 0,
+      "sr_idle": 0,
+      "sr_wren": 2,
+      "sr_wrdi": 0,
+      "test_ok": true,
+      "test_id_ok": false,
+      "test_sr_ok": true,
+      "test_bus_ok": true,
+      "test_patterns_ok": true,
+      "test_addressing_ok": true,
+      "test_bytes_tested": 28672,
+      "test_errors": 0,
+      "test_first_error_addr": 0
+    },
+    "sd": {
+      "ok": true,
+      "step": 9,
+      "step_name": "ready",
+      "last_r1": 0,
+      "acmd41_iterations": 3,
+      "init_ms": 8,
+      "type": "SDHC/SDXC",
+      "capacity_bytes": 31666995200,
+      "blocks": 61849600,
+      "ocr": "0xc0ff8000",
+      "oid": "",
+      "pnm": "APPSD",
+      "psn": "0x12800000",
+      "mdt": "2012-04"
+    }
+  }
+}

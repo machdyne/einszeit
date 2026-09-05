@@ -1,0 +1,219 @@
+{
+  "trng_cfg_applied": {
+    "sample_cnt": 16384,
+    "rosc": null
+  },
+  "info": {
+    "fw": "einszeit-hwtest",
+    "version": "1.4.0",
+    "build": "Sep  4 2026 07:58:13",
+    "device_uuid": "9bae095b4556f8f4",
+    "uuid_source": "RP2350 OTP CHIPID",
+    "board_id": "9bae095b4556f8f4",
+    "part_id": "0x30004927",
+    "mfr": 2343,
+    "part": "0x0004",
+    "revision": 3,
+    "clk_sys_hz": 150000000,
+    "temp_c": 32.76,
+    "cap_max": 196608
+  },
+  "pins": {
+    "all_pass": true,
+    "pins": [
+      {
+        "gpio": 18,
+        "name": "FRAM_SCLK",
+        "pullup": 1,
+        "pulldown": 0,
+        "pass": true
+      },
+      {
+        "gpio": 19,
+        "name": "FRAM_MOSI",
+        "pullup": 1,
+        "pulldown": 0,
+        "pass": true
+      },
+      {
+        "gpio": 20,
+        "name": "FRAM_MISO",
+        "pullup": 1,
+        "pulldown": 0,
+        "pass": true
+      },
+      {
+        "gpio": 21,
+        "name": "FRAM_SS",
+        "pullup": 1,
+        "pulldown": 1,
+        "pass": true
+      },
+      {
+        "gpio": 25,
+        "name": "SD_DET",
+        "pullup": 1,
+        "pulldown": 1,
+        "pass": true
+      },
+      {
+        "gpio": 26,
+        "name": "SD_SCLK",
+        "pullup": 1,
+        "pulldown": 1,
+        "pass": true
+      },
+      {
+        "gpio": 27,
+        "name": "SD_MOSI",
+        "pullup": 1,
+        "pulldown": 1,
+        "pass": true
+      },
+      {
+        "gpio": 28,
+        "name": "SD_MISO",
+        "pullup": 1,
+        "pulldown": 1,
+        "pass": true
+      },
+      {
+        "gpio": 29,
+        "name": "SD_CSN",
+        "pullup": 1,
+        "pulldown": 1,
+        "pass": true
+      },
+      {
+        "gpio": 12,
+        "name": "LED",
+        "pullup": 1,
+        "pulldown": 0,
+        "pass": true
+      }
+    ]
+  },
+  "clock": {
+    "clk_sys_hz": 150000000,
+    "clk_peri_hz": 48000000,
+    "clk_usb_hz": 48000000,
+    "clk_ref_hz": 12000000,
+    "clk_adc_hz": 48000000,
+    "meas": {
+      "pll_sys_khz": 150001,
+      "pll_usb_khz": 48000,
+      "xosc_khz": 12000,
+      "rosc_khz": 44035,
+      "lposc_khz": 33,
+      "clk_sys_khz": 150000,
+      "clk_peri_khz": 48000,
+      "clk_usb_khz": 48000,
+      "clk_ref_khz": 12001
+    },
+    "xosc_stable": true,
+    "xosc_startup_delay": 282
+  },
+  "aon": {
+    "running": true,
+    "source": "internal LPOSC (untrimmed ~32 kHz)",
+    "window_ms": 5000,
+    "aon_ms": 5099,
+    "sys_ms": 5000.004,
+    "ratio": 1.019799184,
+    "ppm": 19799.2
+  },
+  "fram_id": {
+    "present": true,
+    "rdid_supported": false,
+    "wel_toggles": true,
+    "miso_alive": true,
+    "id": "000000000000000000",
+    "vendor": "unknown",
+    "part": "unknown",
+    "density_bytes": 0,
+    "sr_idle": 0,
+    "sr_wren": 2,
+    "sr_wrdi": 0
+  },
+  "fram_test": {
+    "ok": true,
+    "id_ok": false,
+    "sr_ok": true,
+    "bus_ok": true,
+    "patterns_ok": true,
+    "addressing_ok": true,
+    "bytes_tested": 28672,
+    "errors": 0,
+    "first_error_addr": 0
+  },
+  "sd": {
+    "ok": true,
+    "step": 9,
+    "step_name": "ready",
+    "last_r1": 0,
+    "acmd41_iterations": 3,
+    "init_ms": 8,
+    "type": "SDHC/SDXC",
+    "capacity_bytes": 31666995200,
+    "blocks": 61849600,
+    "ocr": "0xc0ff8000",
+    "oid": "",
+    "pnm": "APPSD",
+    "psn": "0x12800000",
+    "mdt": "2012-04"
+  },
+  "hrng_info": {
+    "rng_isr": 0,
+    "trng_config": 0,
+    "sample_cnt1": 16384,
+    "debug_control": 0,
+    "busy": 0,
+    "version": 15,
+    "autocorr_trys": 2182,
+    "autocorr_fails": 22,
+    "cfg": {
+      "rosc_len": 0,
+      "sample_cnt": 16384,
+      "bypass_vnc": false,
+      "bypass_crngt": false,
+      "bypass_autocorr": false
+    }
+  },
+  "hrng_health": {
+    "collections": 128,
+    "requested": 128,
+    "bytes": 3072,
+    "elapsed_us": 11065785,
+    "bits_per_sec": 2220.9,
+    "vn_err": 0,
+    "crngt_err": 0,
+    "autocorr_err": 0,
+    "resets": 0,
+    "timeouts": 0,
+    "mode": "conditioned",
+    "rosc_len": 0,
+    "sample_cnt": 16384
+  },
+  "fram": {
+    "present": true,
+    "rdid_supported": false,
+    "wel_toggles": true,
+    "miso_alive": true,
+    "id": "000000000000000000",
+    "vendor": "unknown",
+    "part": "unknown",
+    "density_bytes": 0,
+    "sr_idle": 0,
+    "sr_wren": 2,
+    "sr_wrdi": 0,
+    "test_ok": true,
+    "test_id_ok": false,
+    "test_sr_ok": true,
+    "test_bus_ok": true,
+    "test_patterns_ok": true,
+    "test_addressing_ok": true,
+    "test_bytes_tested": 28672,
+    "test_errors": 0,
+    "test_first_error_addr": 0
+  }
+}
