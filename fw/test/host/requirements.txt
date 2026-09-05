@@ -1,0 +1,7 @@
+# Analysis and report generation
+numpy>=1.24
+scipy>=1.10
+matplotlib>=3.6
+
+# Serial transport; only needed for `collect` and `all`, not for `analyze`
+pyserial>=3.5
