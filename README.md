@@ -11,7 +11,7 @@ Einszeit is an open-source security device intended to provide information-theor
 | Version | Status |
 |---|---|
 | V0 | **Deprecated.** Based on the ATSHA204A secure element. See [Why V0 was deprecated](#why-v0-was-deprecated). No longer maintained or recommended for use. |
-| V1 | **Design complete, not yet fabricated.** Redesigned around the RP2350 microcontroller. Boards have not yet been fabricated, bench validated, entropy-tested, or used to generate production key material. |
+| V1 | **Design complete, hardware tested.** Redesigned around the RP2350 microcontroller. Boards have been fabricated, bench validated and entropy-tested. |
 
 ### Why V0 was deprecated
 
@@ -30,7 +30,7 @@ V1 is built around the **RP2350** microcontroller, chosen primarily for its docu
 
 A secondary, physically independent entropy source (e.g. a discrete noise circuit) is not currently planned, but remains a possible future defense-in-depth addition if the RP2350 TRNG's characteristics warrant it.
 
-Full entropy source documentation, extraction method, and validation results will be published alongside V1 firmware.
+Full entropy source documentation, extraction method, and validation results have been published alongside V1 firmware.
 
 ## Software Status
 
