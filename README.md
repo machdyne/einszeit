@@ -2,6 +2,8 @@
 
 Einszeit is an open-source security device intended to provide information-theoretically secure (one-time-pad based) encryption between two or more paired devices over any communications medium.
 
+![Einszeit UI Screenshot](https://github.com/machdyne/einszeit/blob/322f3ac8f39f7a85bbcb756dacbb4696dd5df2d2/ss.png)
+
 ![Einszeit](https://github.com/machdyne/einszeit/blob/a18252655b3a970fcdf45a9b7ed6dc5c5770965d/einszeit.png)
 
 > **Project status:** V1 hardware is in active development. See [Hardware Status](#hardware-status) and [Software Status](#software-status) below before using this project for anything beyond bench testing.
