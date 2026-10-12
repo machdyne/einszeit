@@ -1,5 +1,31 @@
-# Ignore Python byte-compiled files
+# Python byte-compiled files
 **/__pycache__/
 *.py[cod]
 *$py.class
+.pytest_cache/
 
+# Build output: the host tests (tests/run.sh), sw (cmake -S sw -B build/sw)
+# and the firmware (fw/einszeit/README.md) all build into a build/ directory
+build/
+*.o
+*.a
+*.elf
+*.uf2
+*.map
+*.dis
+
+# libFuzzer artifacts written to the working directory
+crash-*
+leak-*
+timeout-*
+oom-*
+slow-unit-*
+
+# Bench validation runs (fw/test/host/ez_validate.py --out runs/...);
+# reports worth keeping are archived under fw/test/host/docs/
+fw/test/host/runs/
+
+# Editors and operating systems
+*.swp
+*~
+.DS_Store

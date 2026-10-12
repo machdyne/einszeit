@@ -1,0 +1,4 @@
+# Einszeit: let the logged-in user reach the device's HID interface without
+# root. Install:  sudo cp 99-einszeit.rules /etc/udev/rules.d/ &&
+#                 sudo udevadm control --reload-rules && sudo udevadm trigger
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="16d0", ATTRS{idProduct}=="1475", MODE="0660", TAG+="uaccess"

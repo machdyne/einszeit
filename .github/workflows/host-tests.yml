@@ -1,0 +1,57 @@
+# Host test suite on every push and pull request.
+# EZ-SEC-001 SEC-TEST-ENC-001 requires KATs on every firmware build; this
+# workflow is where they run once the engine exists (Phase 1b).
+name: host-tests
+on: [push, pull_request]
+jobs:
+  host-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        cc: [gcc, clang]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and run (ASan + UBSan)
+        env:
+          CC: ${{ matrix.cc }}
+        run: tests/run.sh
+  static-analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: gcc -fanalyzer and clang --analyze over core/ and ports/ (SEC-FW-001)
+        run: |
+          set -e
+          inc="-Icore/include -Iproto/include -Iports/fatfs -Iports/ezstore -Iports/mirror -Ithird_party/fatfs"
+          for f in core/src/*.c proto/src/*.c ports/fatfs/ez_ks_fatfs.c ports/ezstore/*.c ports/mirror/*.c; do
+            gcc -std=c11 -fanalyzer -Wall -Wextra -Werror $inc -c "$f" -o /dev/null
+            clang --analyze -Xclang -analyzer-werror $inc "$f" -o /dev/null
+          done
+  fuzz:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: libFuzzer, 60 s per harness
+        run: |
+          sudo apt-get update && sudo apt-get install -y clang cmake python3-pyte lrzsz
+          CC=clang cmake -S tests/fuzz -B build/fuzz && cmake --build build/fuzz -j
+          tests/fuzz/run.sh build/fuzz 60 | tee fuzz.log
+          ! grep -E "ERROR|SUMMARY" fuzz.log
+
+  firmware:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Toolchain and pico-sdk 2.1.1
+        run: |
+          sudo apt-get update && sudo apt-get install -y gcc-arm-none-eabi
+          git clone --depth 1 --branch 2.1.1 https://github.com/raspberrypi/pico-sdk.git ../pico-sdk
+          git -C ../pico-sdk submodule update --init --depth 1 lib/tinyusb
+      - name: Build fw/einszeit (fails if the image reaches the key partition, SEC-HW-003)
+        run: |
+          cmake -S fw/einszeit -B build/fw -DCMAKE_BUILD_TYPE=Release -DPICO_SDK_PATH=$PWD/../pico-sdk
+          cmake --build build/fw -j
+      - uses: actions/upload-artifact@v4
+        with:
+          name: einszeit-uf2
+          path: build/fw/*.uf2

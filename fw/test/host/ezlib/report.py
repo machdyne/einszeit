@@ -578,7 +578,7 @@ range; characterise across the intended operating envelope before trusting it
 with key material.</li>
 <li>The TRNG is closed Arm IP. No amount of output testing can rule out a
 construction that is deterministic in a way the tests cannot see. This is the
-same limitation the project documentation notes for V0.</li>
+same limitation the project README notes.</li>
 </ul>""")
     parts.append("</section>")
 

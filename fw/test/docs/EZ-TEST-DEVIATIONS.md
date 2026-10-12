@@ -66,8 +66,8 @@ byte.
 
 **Why it exists:** SP 800-90B assesses the *noise source*, not the conditioned
 output. Assessing post-conditioning data measures the conditioner. This is the
-same reasoning the project README already gives for deprecating V0's ATSHA204A
-DRBG output.
+same reasoning the project README gives for using a raw TRNG rather than a
+secure element's DRBG output.
 
 **Containment:** raw captures are tagged `"key_material": false`, the report
 prints a banner saying so, and conditioned mode (health tests enabled) is
