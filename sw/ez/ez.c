@@ -144,7 +144,7 @@ static void progress_line(const char *what, uint16_t pm)
 static void wait_device(void)
 {
 	bool said = false;
-	for (int i = 0; ; i++) {
+	for (;;) {
 		uint8_t job, jcmd; uint16_t pm;
 		device_job(&job, &jcmd, &pm);
 		if (!job) break;

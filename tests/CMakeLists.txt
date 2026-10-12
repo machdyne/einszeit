@@ -146,3 +146,5 @@ target_compile_options(zm_peer PRIVATE ${EZ_SAN})
 add_executable(xm_peer xfer/xm_peer.c)
 target_link_libraries(xm_peer ez_xfer ${EZ_SAN})
 target_compile_options(xm_peer PRIVATE ${EZ_SAN})
+
+set_source_files_properties(${CMAKE_CURRENT_LIST_DIR}/../third_party/zetta/zetta.c PROPERTIES COMPILE_OPTIONS "-Wno-empty-body")   # vendored, unmodified: an intentional empty while body

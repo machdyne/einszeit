@@ -42,3 +42,5 @@ find_package(Threads REQUIRED)
 add_executable(ez-vdev vdev/vdev.c)
 target_link_libraries(ez-vdev ez_sw_core Threads::Threads)
 target_compile_options(ez-vdev PRIVATE ${WARN})
+
+set_source_files_properties(${ROOT}/third_party/zetta/zetta.c PROPERTIES COMPILE_OPTIONS "-Wno-empty-body")   # vendored, unmodified: an intentional empty while body

@@ -1,6 +1,6 @@
-# Host test suite on every push and pull request.
-# EZ-SEC-001 SEC-TEST-ENC-001 requires KATs on every firmware build; this
-# workflow is where they run once the engine exists (Phase 1b).
+# Host test suite, static analysis, fuzzing and the firmware build, on
+# every push and pull request. EZ-SEC-001 SEC-TEST-ENC-001 requires the
+# KATs on every build; they run in the host tests.
 name: host-tests
 on: [push, pull_request]
 jobs:
@@ -11,6 +11,8 @@ jobs:
         cc: [gcc, clang]
     steps:
       - uses: actions/checkout@v4
+      - name: Dependencies (hidapi's libudev; pyte for the screen tests; lrzsz for interop)
+        run: sudo apt-get update && sudo apt-get install -y libudev-dev python3-pyte lrzsz
       - name: Build and run (ASan + UBSan)
         env:
           CC: ${{ matrix.cc }}
@@ -33,7 +35,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: libFuzzer, 60 s per harness
         run: |
-          sudo apt-get update && sudo apt-get install -y clang cmake python3-pyte lrzsz
+          sudo apt-get update && sudo apt-get install -y clang cmake
           CC=clang cmake -S tests/fuzz -B build/fuzz && cmake --build build/fuzz -j
           tests/fuzz/run.sh build/fuzz 60 | tee fuzz.log
           ! grep -E "ERROR|SUMMARY" fuzz.log

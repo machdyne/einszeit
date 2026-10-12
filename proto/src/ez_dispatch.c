@@ -26,7 +26,7 @@ static void send_rsp(ez_dispatch_t *d, uint8_t cmd, ez_status_t st, const uint8_
 		f.seq = seq++;
 		f.flags = (uint8_t)((off == 0 ? EZ_FF_FIRST : 0) | (off + k == n ? EZ_FF_LAST : 0));
 		f.len = (uint16_t)k;
-		if (k) memcpy(f.data, p + off, k);
+		if (k && p) memcpy(f.data, p + off, k);          /* p is NULL only with n == 0 */
 		ez_frame_encode(&f, out);
 		d->send(d->send_ctx, out);
 		off += k;
